@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch all tests 3 browsers",
+            "request": "launch",
+            "runtimeArgs": [
+                "run-script",
+                "tests3x"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+        {
+            "name": "Launch all tests",
+            "request": "launch",
+            "runtimeArgs": [
+                "run-script",
+                "test"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+        {
+            "name": "Launch this test",
+            "request": "launch",
+            "runtimeArgs": [
+                "exec",
+                "playwright",
+                "test",
+                // When launched via run-script, any backslashes in args get doubled, breaking 
+                // matching of directory paths in Windows.
+                // To match on filename only use "${fileBasename}"
+                "${relativeFile}"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        }
+    ]
+}
